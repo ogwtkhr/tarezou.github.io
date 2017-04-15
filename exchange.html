@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>exchange</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container-fluid">
+<div class="page-header">
+	<h1>Excange to JPY</h1>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body" id="displayJpy">
+  &yen; 0
+  </div>
+</div>
+<div class="input-group">
+  <span class="input-group-addon">vnd</span>
+  <input type="text" class="form-control" aria-label="" id="inputVnd">
+</div>
+<div id="result"></div>
+</div>
+<script type="text/javascript">
+var exchangeToJpy = function(vnd) {
+	var rate = 207;
+	return parseInt(vnd / rate, 10);
+};
+
+var renderResult = function(jpy) {
+	var resultDom = document.querySelector('#displayJpy');
+	resultDom.innerHTML = '&yen; ' + jpy;
+}
+
+var exec = function(e) {
+	var vnd = e.target.value;
+	var jpy = exchangeToJpy(vnd);
+	renderResult(jpy);
+};
+
+
+document.querySelector('#inputVnd').addEventListener('keyup', exec);
+</script>
+</body>
+</html>
